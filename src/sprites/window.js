@@ -2,15 +2,17 @@ define([
     'phaser'
 ], function (Phaser) {
     'use strict';
-    var width = 100;
-    var wType = 0;
-
-    function Window(game) {
-        Phaser.Sprite.call(this, game, game.width / 2, game.height - this.height, 'w');
+    var winType;
+    
+    function Window(game, x, y) {
+        this.winType = Math.floor(Math.random() * 7) + 1;;
+        Phaser.Sprite.call(this, game, x, y, 'window', this.winType);
+        
         //game.physics.enable(this, Phaser.Physics.ARCADE);
         this.anchor.setTo(0.5, 0.5);
-        this.width = width;
-        this.scale.y = this.scale.x;
+        this.scale.setTo(0.5, 0.5);
+        
+        game.add.existing(this);
     }
 
     Window.prototype = Object.create(Phaser.Sprite.prototype);

@@ -19,7 +19,8 @@ define([
         ];
         
         this.sprites = [
-            ['sausage', 'assets/images/so6.png', 50, 170, 4]
+            ['sausage', 'assets/images/so6.png', 50, 170, 4],
+            ['window', 'assets/images/fenetres.png', 120, 120, 7],
         ]
     }
 

@@ -1,10 +1,11 @@
 define([
-    'phaser', 'sprites/bbq', 'sprites/sausage'
-], function (Phaser, Bbq, Sausage) {
+    'phaser', 'sprites/bbq', 'sprites/sausage', 'sprites/window'
+], function (Phaser, Bbq, Sausage, Window) {
     'use strict';
 
     function Game(game) {
         var bg, building, arbres, saucisse, platforms, score = 0, scoreText, bbq, sausage;
+        var windowsArray;
     }
 
     Game.prototype = {
@@ -103,6 +104,18 @@ define([
             // arbres de devant
             this.arbres = this.game.add.sprite(0,478,'arbres');
             this.arbres.scale.setTo(0.5, 0.5);
+            
+            // fenetres de l'immeuble
+            this.windowsArray = [];
+            
+            for (var i=0; i < 5; i++) {
+                for (var j=0; j < 3; j++) {
+                    if (!(i==4 && j==1)) {
+                        this.windowsArray.push(new Window(this.game,112 + j*60, 200 + i*60));
+                    }
+                }
+            }
+            
         },
         
         setupActors: function() {
