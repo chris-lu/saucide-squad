@@ -102,16 +102,44 @@ define([
             this.building.scale.setTo(0.5, 0.5);
             
             // arbres de devant
-            this.arbres = this.game.add.sprite(0,478,'arbres');
+            this.arbres = this.game.add.sprite(0,481,'arbres');
             this.arbres.scale.setTo(0.5, 0.5);
             
             // fenetres de l'immeuble
             this.windowsArray = [];
             
+            var wType = [
+                [7,4,7],
+                [2,3,2],
+                [2,3,1],
+                [2,5,2],
+                [4,0,7],
+            ];
+            
+            if (Math.random() < 0.67) {
+                if (Math.random() <= 0.5) {
+                    wType = [
+                        [2,2,1],
+                        [3,3,3],
+                        [2,2,2],
+                        [2,5,2],
+                        [7,0,7],
+                    ];
+                } else {
+                    wType = [
+                        [7,1,2],
+                        [3,7,2],
+                        [2,5,4],
+                        [3,2,3],
+                        [2,0,2],
+                    ];
+                }
+            }
+            
             for (var i=0; i < 5; i++) {
                 for (var j=0; j < 3; j++) {
                     if (!(i==4 && j==1)) {
-                        this.windowsArray.push(new Window(this.game,112 + j*60, 200 + i*60));
+                        this.windowsArray.push(new Window(this.game,112 + j*60, 200 + i*60, wType[i][j]));
                     }
                 }
             }

@@ -4,8 +4,8 @@ define([
     'use strict';
     var winType;
     
-    function Window(game, x, y) {
-        this.winType = Math.floor(Math.random() * 7) + 1;;
+    function Window(game, x, y, type) {
+        this.winType = type; //Math.floor(Math.random() * 7) + 1;;
         Phaser.Sprite.call(this, game, x, y, 'window', this.winType);
         
         //game.physics.enable(this, Phaser.Physics.ARCADE);
