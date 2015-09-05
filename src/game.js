@@ -71,14 +71,10 @@ define([
 			balcon = this.platforms.create(-150, 250, 'sol');
 			balcon.body.immovable = true;
 			
-			var score;
-			//  The score
-			score = this.game.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#fff' });
-			
-			// Affichage nouvelle saucise toutes les 5 secondes
-			setInterval(this.saucisse, 5000 );
+			balcon.inputEnabled = true;
+			balcon.events.onInputDown.add(function () {balcon.kill();}, this);
         },
-		
+
 		update: function() {
 			//  Collide the player and the stars with the platforms
 			this.game.physics.arcade.collide(this.saucisse, this.platforms);
