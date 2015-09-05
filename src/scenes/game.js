@@ -81,7 +81,7 @@ define([
         
         update: function () {
             //  Collide the player and the stars with the platforms
-            // this.game.physics.arcade.collide(this.saucisse, this.platforms);
+            this.game.physics.arcade.collide(this.sausage, this.bbq);
         },
         
         incrementScore: function () {
