@@ -16,8 +16,14 @@
         }
     });
  
-    require(['phaser', 'game'], function (Phaser, Game) {
-        var game = new Game();
-        game.start();
+    require(['phaser', 'gamescene', 'boot', 'preloader','menu'], function (Phaser, GameScene, Boot, Preloader, Menu) {
+        var game = new Phaser.Game('100', '100', Phaser.AUTO, '');
+        
+        game.state.add('Boot', Boot);
+		game.state.add('Preloader', Preloader);
+		game.state.add('Menu', Menu);
+		game.state.add('GameScene', GameScene);
+		
+        game.state.start('Boot');
     });
 }());
