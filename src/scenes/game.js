@@ -1,10 +1,10 @@
 define([
-    'phaser', 'sprites/bbq', 'sprites/sausage', 'sprites/window'
-], function (Phaser, Bbq, Sausage, Window) {
+    'phaser', 'sprites/bbq', 'sprites/jumpers', 'sprites/window'
+], function (Phaser, Bbq, Jumpers, Window) {
     'use strict';
 
     function Game(game) {
-        var bg, building, arbres, saucisse, platforms, score = 0, scoreText, bbq, sausage;
+        var bg, building, arbres, saucisse, platforms, score = 0, scoreText, bbq, sausage, jumpers;
         var windowsArray;
     }
 
@@ -82,7 +82,7 @@ define([
         
         update: function () {
             //  Collide the player and the stars with the platforms
-            this.game.physics.arcade.collide(this.sausage, this.bbq);
+            this.game.physics.arcade.collide(this.jumpers, this.bbq);
         },
         
         incrementScore: function () {
@@ -148,7 +148,9 @@ define([
         
         setupActors: function() {
             this.bbq = new Bbq(this.game);
-            this.sausage = new Sausage(this.game, this.building.y);
+            this.jumpers = new Jumpers(this.game);
+            this.jumpers.jump();
+            //this.sausage = new Sausage(this.game, this.building.y);
         },
     };
 

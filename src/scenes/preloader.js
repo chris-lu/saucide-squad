@@ -20,6 +20,7 @@ define([
         
         this.sprites = [
             ['sausage', 'assets/images/so6.png', 64, 192, 4],
+            ['human', 'assets/images/humans.png', 64, 219, 5],
             ['window', 'assets/images/fenetres.png', 120, 120, 7],
         ]
     }
