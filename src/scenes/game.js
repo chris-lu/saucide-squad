@@ -6,6 +6,7 @@ define([
     function Game(game) {
         var bg, building, arbres, saucisse, platforms, score = 0, scoreText, bbq, sausage;
         var windowsArray;
+        var nuage1, nuage2;
     }
 
     Game.prototype = {
@@ -17,6 +18,8 @@ define([
             this.load.image('bg','assets/images/fond.png');
             this.load.image('building','assets/images/immeuble-vide.png');
             this.load.image('arbres','assets/images/arbres-premierplan.png');
+            this.load.image('nuage1','assets/images/nuage1.png');
+            this.load.image('nuage2','assets/images/nuage2.png');
             
         },
         create: function () {
@@ -25,7 +28,7 @@ define([
             
             this.setupBackground();
             this.setupActors();
-            
+            this.setupForeground();
             
 //            var saucisses;
 
@@ -83,6 +86,8 @@ define([
         update: function () {
             //  Collide the player and the stars with the platforms
             this.game.physics.arcade.collide(this.sausage, this.bbq);
+            
+            this.updateNuagesPosition();
         },
         
         incrementScore: function () {
@@ -95,15 +100,16 @@ define([
             // background
             this.bg = this.game.add.sprite(0, 0, 'bg');
             this.bg.scale.setTo(0.5, 0.5);
-            //this.bg.anchor.setTo(0.5, 0.5);
+            
+            // nuages
+            this.nuage1 = this.game.add.sprite(10, 175, 'nuage1');
+            this.nuage1.scale.setTo(0.5, 0.5);
+            this.nuage2 = this.game.add.sprite(290, 220, 'nuage2');
+            this.nuage2.scale.setTo(0.5, 0.5);
             
             // immeuble
             this.building = this.game.add.sprite(73,155,'building');
             this.building.scale.setTo(0.5, 0.5);
-            
-            // arbres de devant
-            this.arbres = this.game.add.sprite(0,481,'arbres');
-            this.arbres.scale.setTo(0.5, 0.5);
             
             // fenetres de l'immeuble
             this.windowsArray = [];
@@ -146,9 +152,28 @@ define([
             
         },
         
+        setupForeground: function() {
+            // arbres de devant
+            this.arbres = this.game.add.sprite(0,481,'arbres');
+            this.arbres.scale.setTo(0.5, 0.5);
+        },
+        
         setupActors: function() {
             this.bbq = new Bbq(this.game);
             this.sausage = new Sausage(this.game, this.building.y);
+        },
+        
+        updateNuagesPosition: function() {
+            this.nuage1.x -= 0.30;
+            this.nuage2.x -= 0.42;
+            if (this.nuage1.x < -this.nuage1.width)
+            {
+                this.nuage1.x = this.game.world.width;
+            }
+            if (this.nuage2.x < -this.nuage2.width)
+            {
+                this.nuage2.x = this.game.world.width;
+            }
         },
     };
 
