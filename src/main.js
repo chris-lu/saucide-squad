@@ -15,12 +15,17 @@
     });
 
     require(['phaser', 'scenes/game', 'scenes/boot', 'scenes/preloader', 'scenes/menu'], function (Phaser, Game, Boot, Preloader, Menu) {
-        var game = new Phaser.Game('100', '100', Phaser.AUTO, '');
+        var SAFE_ZONE_WIDTH  = 640;
+        var SAFE_ZONE_HEIGHT = 1136;
+        var game = new Phaser.Game( SAFE_ZONE_WIDTH/2, SAFE_ZONE_HEIGHT/2, Phaser.AUTO, 'game_div');
+
+        //var game = new Phaser.Game('100', '100', Phaser.AUTO, '');
+        //game.scale.setGameSize(window.innerWidth, window.innerHeight);
 
         game.state.add('Boot', Boot, true);
         game.state.add('Preloader', Preloader, false);
         game.state.add('Menu', Menu, false);
         game.state.add('Game', Game, false);
-
+        
     });
 }());

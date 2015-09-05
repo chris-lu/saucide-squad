@@ -82,7 +82,7 @@ define([
         
         update: function () {
             //  Collide the player and the stars with the platforms
-            // this.game.physics.arcade.collide(this.saucisse, this.platforms);
+            this.game.physics.arcade.collide(this.sausage, this.bbq);
         },
         
         incrementScore: function () {
@@ -148,7 +148,7 @@ define([
         
         setupActors: function() {
             this.bbq = new Bbq(this.game);
-            this.sausage = new Sausage(this.game);
+            this.sausage = new Sausage(this.game, this.building.y);
         },
     };
 
