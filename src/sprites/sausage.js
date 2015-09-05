@@ -2,10 +2,10 @@ define([
     'phaser'
 ], function (Phaser) {
     'use strict';
-    var width = 16;
+    var width = 20;
 
-    function Sausage(game) {
-        Phaser.Sprite.call(this, game, game.width / 2, 0, 'sausage', 1);
+    function Sausage(game, y) {
+        Phaser.Sprite.call(this, game, game.width / 2, y - 64, 'sausage', 1);
         game.physics.enable(this, Phaser.Physics.ARCADE);
         
         this.anchor.setTo(0.5, 0.5);
