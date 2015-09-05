@@ -4,7 +4,7 @@ define([
     'use strict';
 
     function Game() {
-		var saucisse, platforms;
+		var saucisse, platforms, score = 0, scoreText;
     }
     
     Game.prototype = {
@@ -46,6 +46,7 @@ define([
 
 			//  This just gives each star a slightly random bounce value
 			this.saucisse.body.bounce.y = 0.7 + Math.random() * 0.2;
+			this.saucisse.body.bounce.x = 0.7 + Math.random() * 0.2;
 			
 			// SOL ET BALCONS
 			
@@ -73,11 +74,22 @@ define([
 			
 			balcon.inputEnabled = true;
 			balcon.events.onInputDown.add(function () {balcon.kill();}, this);
+			
+			// Apparition du score
+			scoreText = game.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#fff' });
+			
+			this.game.physics.arcade.collide(saucisse, barbecue, IncrementScore, null, this);
         },
 
 		update: function() {
 			//  Collide the player and the stars with the platforms
 			this.game.physics.arcade.collide(this.saucisse, this.platforms);
+		},
+		
+		IncrementScore: function() {
+			//  Add and update the score
+			score += 10;
+			scoreText.text = 'Score: ' + score;
 		}
     };
     
