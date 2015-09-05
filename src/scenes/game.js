@@ -108,10 +108,26 @@ define([
             // fenetres de l'immeuble
             this.windowsArray = [];
             
+            var wType = [
+                [1,2,3],
+                [4,5,6],
+                [7,1,2],
+                [3,4,5],
+                [6,0,7],
+            ];
+            
+            wType = [
+                [7,1,2],
+                [3,7,2],
+                [2,5,4],
+                [3,2,3],
+                [2,0,2],
+            ];
+            
             for (var i=0; i < 5; i++) {
                 for (var j=0; j < 3; j++) {
                     if (!(i==4 && j==1)) {
-                        this.windowsArray.push(new Window(this.game,112 + j*60, 200 + i*60));
+                        this.windowsArray.push(new Window(this.game,112 + j*60, 200 + i*60, wType[i][j]));
                     }
                 }
             }
