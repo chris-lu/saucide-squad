@@ -22,21 +22,9 @@ define([
             //  We're going to be using physics, so enable the Arcade Physics system
             this.game.physics.startSystem(Phaser.Physics.ARCADE);
             
-            // background
-            this.bg = this.game.add.sprite(0, 0, 'bg');
-            this.bg.scale.setTo(0.5, 0.5);
-            //this.bg.anchor.setTo(0.5, 0.5);
+            this.setupBackground();
+            this.setupActors();
             
-            // immeuble
-            this.building = this.game.add.sprite(73,155,'building');
-            this.building.scale.setTo(0.5, 0.5);
-            
-            // arbres de devant
-            this.arbres = this.game.add.sprite(0,478,'arbres');
-            this.arbres.scale.setTo(0.5, 0.5);
-            
-            this.bbq = new Bbq(this.game);
-            this.sausage = new Sausage(this.game);
             
 //            var saucisses;
 
@@ -53,6 +41,7 @@ define([
 //            this.saucisse.body.bounce.y = 0.7 + Math.random() * 0.2;
 //            this.saucisse.body.bounce.x = 0.7 + Math.random() * 0.2;
 
+/*
             // SOL ET BALCONS
 
             //  The platforms group contains the ground and the 2 ledges we can jump on
@@ -87,22 +76,39 @@ define([
 
             
             //this.game.physics.arcade.collide(this.saucisse, barbecue, this.incrementScore, null, this);
+*/
         },
+        
         update: function () {
             //  Collide the player and the stars with the platforms
-            this.game.physics.arcade.collide(this.saucisse, this.platforms);
+            // this.game.physics.arcade.collide(this.saucisse, this.platforms);
         },
+        
         incrementScore: function () {
             //  Add and update the score
             score += 10;
             scoreText.text = 'Score: ' + score;
         },
-        x: function (percentx) {
-            return percentx * this.game.world.bounds.width / 100;
+        
+        setupBackground: function() {
+            // background
+            this.bg = this.game.add.sprite(0, 0, 'bg');
+            this.bg.scale.setTo(0.5, 0.5);
+            //this.bg.anchor.setTo(0.5, 0.5);
+            
+            // immeuble
+            this.building = this.game.add.sprite(73,155,'building');
+            this.building.scale.setTo(0.5, 0.5);
+            
+            // arbres de devant
+            this.arbres = this.game.add.sprite(0,478,'arbres');
+            this.arbres.scale.setTo(0.5, 0.5);
         },
-        y: function (percenty) {
-            return percenty * this.game.world.bounds.height / 100;
-        }
+        
+        setupActors: function() {
+            this.bbq = new Bbq(this.game);
+            this.sausage = new Sausage(this.game);
+        },
     };
 
     return Game;
