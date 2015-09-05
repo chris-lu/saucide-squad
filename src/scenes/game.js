@@ -3,32 +3,24 @@ define([
 ], function (Phaser) { 
     'use strict';
 
-    function Game() {
-		var saucisse, platforms, score = 0, scoreText;
+    function Game(game) {
+	    var saucisse, platforms, score = 0, scoreText;
     }
     
     Game.prototype = {
         constructor: Game,
-
-        start: function() {
-            this.game = new Phaser.Game('100', '100', Phaser.AUTO, '', { 
-                preload: this.preload, 
-                create: this.create ,
-				update: this.update 
-            });
-        },
-
+        
         preload: function() {
-            this.game.load.image('logo', 'assets/title.png');
-            this.game.load.image('saucisse', 'assets/saucisse.png');
-			this.game.load.image('sol', 'assets/plateforme.png');
+            this.load.image('logo', 'assets/title.png');
+            this.load.image('saucisse', 'assets/saucisse.png');
+			this.load.image('sol', 'assets/plateforme.png');
         },
         
         create: function() {
 			//  We're going to be using physics, so enable the Arcade Physics system
 			this.game.physics.startSystem(Phaser.Physics.ARCADE);			
 			
-            var logo = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'logo');
+            var logo = this.game.add.sprite(this.x(50), this.y(20), 'logo');
             logo.anchor.setTo(0.5, 0.5);
 			
 			var saucisses;
@@ -43,6 +35,7 @@ define([
 
 			//  Let gravity do its thing
 			this.saucisse.body.gravity.y = 300;
+			//this.saucisse.body.gravity.x = 50;
 
 			//  This just gives each star a slightly random bounce value
 			this.saucisse.body.bounce.y = 0.7 + Math.random() * 0.2;
@@ -76,22 +69,30 @@ define([
 			balcon.events.onInputDown.add(function () {balcon.kill();}, this);
 			
 			// Apparition du score
-			scoreText = game.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#fff' });
+			this.scoreText = this.game.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#fff' });
 			
-			this.game.physics.arcade.collide(saucisse, barbecue, IncrementScore, null, this);
+			var barbecue;
+			this.game.physics.arcade.collide(this.saucisse, barbecue, this.incrementScore, null, this);
         },
-
-		update: function() {
+        
+        update: function() {
 			//  Collide the player and the stars with the platforms
 			this.game.physics.arcade.collide(this.saucisse, this.platforms);
 		},
 		
-		IncrementScore: function() {
+		incrementScore: function() {
 			//  Add and update the score
 			score += 10;
 			scoreText.text = 'Score: ' + score;
+		},
+		
+		x: function(percentx) {
+			return percentx * this.game.world.bounds.width / 100;
+		},
+		y: function(percenty) {
+			return percenty * this.game.world.bounds.height / 100;
 		}
     };
-    
+	
     return Game;
 });

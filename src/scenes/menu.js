@@ -27,7 +27,6 @@ define([
 			var test;
 			//  The score
 			test = this.game.add.text(16, 16, 'menu', { fontSize: '32px', fill: '#fff' });
-
 		},
 	
 		update: function () {
@@ -35,12 +34,11 @@ define([
 		},
 		
 		startGame: function (pointer) {
-			console.log('plop');
 			//	Ok, the Play Button has been clicked or touched, so let's stop the music (otherwise it'll carry on playing)
 			//this.music.stop();
 	
 			//	And start the actual game
-			this.state.start('GameScene');
+			this.state.start('Game');
 
 		}
     };

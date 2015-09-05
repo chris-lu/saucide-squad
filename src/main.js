@@ -16,13 +16,13 @@
         }
     });
  
-    require(['phaser', 'gamescene', 'boot', 'preloader','menu'], function (Phaser, GameScene, Boot, Preloader, Menu) {
+    require(['phaser', 'scenes/game', 'scenes/boot', 'scenes/preloader','scenes/menu'], function (Phaser, Game, Boot, Preloader, Menu) {
         var game = new Phaser.Game('100', '100', Phaser.AUTO, '');
         
         game.state.add('Boot', Boot);
 		game.state.add('Preloader', Preloader);
 		game.state.add('Menu', Menu);
-		game.state.add('GameScene', GameScene);
+		game.state.add('Game', Game);
 		
         game.state.start('Boot');
     });
