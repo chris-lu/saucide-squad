@@ -13,7 +13,7 @@ define([
         start: function() {
             this.game = new Phaser.Game('100', '100', Phaser.AUTO, '', { 
                 preload: this.preload, 
-                create: this.create,
+                create: this.create ,
 				update: this.update 
             });
         },
@@ -82,10 +82,6 @@ define([
 		update: function() {
 			//  Collide the player and the stars with the platforms
 			this.game.physics.arcade.collide(this.saucisse, this.platforms);
-			
-			game.rootScene.tl.then(function() {
-				var enemy = new Enemy();
-			}).delay(30).loop();
 		}
     };
     
