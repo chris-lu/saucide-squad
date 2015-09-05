@@ -1,18 +1,14 @@
 define([
-    'phaser'
-], function (Phaser) {
+    'phaser', 'sprites/bbq', 'sprites/sausage'
+], function (Phaser, Bbq, Sausage) {
     'use strict';
 
     function Game(game) {
-        var saucisse, platforms, score = 0, scoreText;
+        var saucisse, platforms, score = 0, scoreText, bbq, sausage;
     }
 
     Game.prototype = {
         constructor: Game,
-        preload: function () {
-            this.load.image('saucisse', 'assets/saucisse.png');
-            this.load.image('sol', 'assets/plateforme.png');
-        },
         create: function () {
             //  We're going to be using physics, so enable the Arcade Physics system
             this.game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -20,23 +16,22 @@ define([
             var logo = this.game.add.sprite(this.x(50), this.y(20), 'logo');
             logo.anchor.setTo(0.5, 0.5);
 
-            var saucisses;
+            this.bbq = new Bbq(this.game);
+            this.sausage = new Sausage(this.game);
+            
+//            var saucisses;
             //  Finally some stars to collect
-            saucisses = this.game.add.group();
+//            saucisses = this.game.add.group();
 
             //  We will enable physics for any star that is created in this group
-            saucisses.enableBody = true;
+//            saucisses.enableBody = true;
 
             //  Create a star inside of the 'stars' group
-            this.saucisse = saucisses.create(0, 0, 'saucisse');
-
-            //  Let gravity do its thing
-            this.saucisse.body.gravity.y = 300;
-            //this.saucisse.body.gravity.x = 50;
+//            this.saucisse = saucisses.create(0, 0, 'saucisse');
 
             //  This just gives each star a slightly random bounce value
-            this.saucisse.body.bounce.y = 0.7 + Math.random() * 0.2;
-            this.saucisse.body.bounce.x = 0.7 + Math.random() * 0.2;
+//            this.saucisse.body.bounce.y = 0.7 + Math.random() * 0.2;
+//            this.saucisse.body.bounce.x = 0.7 + Math.random() * 0.2;
 
             // SOL ET BALCONS
 
@@ -70,8 +65,8 @@ define([
             // Apparition du score
             this.scoreText = this.game.add.text(16, 16, 'score: 0', {fontSize: '32px', fill: '#fff'});
 
-            var barbecue;
-            this.game.physics.arcade.collide(this.saucisse, barbecue, this.incrementScore, null, this);
+            
+            //this.game.physics.arcade.collide(this.saucisse, barbecue, this.incrementScore, null, this);
         },
         update: function () {
             //  Collide the player and the stars with the platforms

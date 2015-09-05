@@ -10,10 +10,16 @@ define([
         this.game = game;
         
                 
-        this.resources = [
-            ['logo', 'assets/title.png'],
+        this.images = [
+            ['logo', 'assets/images/title.png'],
             ['bbq', 'assets/images/bbq.png'],
-            ['plateforme', 'assets/plateforme.png']
+            ['plateforme', 'assets/plateforme.png'],
+            ['saucisse', 'assets/saucisse.png'],
+            ['sol', 'assets/plateforme.png']
+        ];
+        
+        this.sprites = [
+            ['sausage', 'assets/images/so6.png', 50, 170, 4]
         ]
     }
 
@@ -34,10 +40,13 @@ define([
 
             //	Here we load the rest of the assets our game needs.
             //	As this is just a Project Template I've not provided these assets, swap them for your own.
-            for(var key in this.resources) {
-                this.game.load.image(this.resources[key][0], this.resources[key][1]);
+            for(var key in this.images) {
+                this.game.load.image(this.images[key][0], this.images[key][1]);
             }
             
+            for(var key in this.sprites) {
+                this.game.load.spritesheet(this.sprites[key][0], this.sprites[key][1], this.sprites[key][2], this.sprites[key][3], this.sprites[key][4]);
+            }
             //this.load.image('titlepage', 'images/title.jpg');
             //this.load.atlas('playButton', 'images/play_button.png', 'images/play_button.json');
             //this.load.audio('titleMusic', ['audio/main_menu.mp3']);
