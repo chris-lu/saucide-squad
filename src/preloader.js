@@ -26,7 +26,7 @@ define([
 	
 			//	Here we load the rest of the assets our game needs.
 			//	As this is just a Project Template I've not provided these assets, swap them for your own.
-			this.load.image('test', 'assets/test.jpg');
+			this.load.image('plateforme', 'assets/plateforme.png');
 			//this.load.image('titlepage', 'images/title.jpg');
 			//this.load.atlas('playButton', 'images/play_button.png', 'images/play_button.json');
 			//this.load.audio('titleMusic', ['audio/main_menu.mp3']);

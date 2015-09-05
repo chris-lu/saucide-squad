@@ -19,9 +19,10 @@ define([
 			//this.music = this.add.audio('titleMusic');
 			//this.music.play();
 	
-			this.add.sprite(0, 0, 'logo');
+			//this.add.sprite(0, 0, 'logo');
 	
-			this.playButton = this.add.button(400, 600, 'logo', this.startGame, this);
+			//this.playButton = this.add.button(400, 600, 'logo', this.startGame, this);
+			this.playButton = this.add.button('30', 80, 'plateforme', this.startGame, this);
 			
 			var test;
 			//  The score
@@ -34,7 +35,7 @@ define([
 		},
 		
 		startGame: function (pointer) {
-
+			console.log('plop');
 			//	Ok, the Play Button has been clicked or touched, so let's stop the music (otherwise it'll carry on playing)
 			//this.music.stop();
 	
