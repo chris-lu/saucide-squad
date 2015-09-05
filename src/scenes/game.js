@@ -4,7 +4,7 @@ define([
     'use strict';
 
     function Game(game) {
-        var saucisse, platforms, score = 0, scoreText;
+        var bg, building, arbres, saucisse, platforms, score = 0, scoreText;
     }
 
     Game.prototype = {
@@ -12,14 +12,28 @@ define([
         preload: function () {
             this.load.image('saucisse', 'assets/saucisse.png');
             this.load.image('sol', 'assets/plateforme.png');
+            this.load.image('bg','assets/images/fond.png');
+            this.load.image('building','assets/images/immeuble-vide.png');
+            this.load.image('arbres','assets/images/arbres-premierplan.png');
+            
         },
         create: function () {
             //  We're going to be using physics, so enable the Arcade Physics system
             this.game.physics.startSystem(Phaser.Physics.ARCADE);
-
-            var logo = this.game.add.sprite(this.x(50), this.y(20), 'logo');
-            logo.anchor.setTo(0.5, 0.5);
-
+            
+            // background
+            this.bg = this.game.add.sprite(0, 0, 'bg');
+            this.bg.scale.setTo(0.5, 0.5);
+            //this.bg.anchor.setTo(0.5, 0.5);
+            
+            // immeuble
+            this.building = this.game.add.sprite(73,155,'building');
+            this.building.scale.setTo(0.5, 0.5);
+            
+            // arbres de devant
+            this.arbres = this.game.add.sprite(0,478,'arbres');
+            this.arbres.scale.setTo(0.5, 0.5);
+            
             var saucisses;
             //  Finally some stars to collect
             saucisses = this.game.add.group();

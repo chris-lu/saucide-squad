@@ -26,9 +26,12 @@ define([
             var test;
             //  The score
             test = this.game.add.text(16, 16, 'menu', {fontSize: '32px', fill: '#fff'});
+            
+            
         },
         update: function () {
-
+            // à virer quand on voudra vraiment le menu du cul
+            this.state.start('Game');
         },
         startGame: function (pointer) {
             //	Ok, the Play Button has been clicked or touched, so let's stop the music (otherwise it'll carry on playing)
