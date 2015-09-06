@@ -15,6 +15,7 @@ define([
         this.width = width;
         this.scale.y = this.scale.x;
         this.angle = Math.random()*10 - 5;
+        this.alpha = 0;
 
         this.body.bounce.y = 0.20;
         this.body.gravity.y = 981;
@@ -23,6 +24,7 @@ define([
         this.body.velocity.y = -170;
         this.body.velocity.x = Math.random()*120 - 60;
         
+        game.add.tween(this).to( { alpha: 1 }, 250, "Quart.easeOut", true);
         game.time.events.add(Phaser.Timer.SECOND * 5, this.disappear, this);
         
         game.add.existing(this);
@@ -67,7 +69,7 @@ define([
             default: 
                 this.body.allowGravity = true;
                 this.body.velocity.x = Math.random()*400 - 200;
-                this.body.velocity.y = -Math.random()*80;
+                this.body.velocity.y = Math.random()*80 - 40;
                 this.body.angularVelocity = Math.random()*1000-500;
                 break;
         }

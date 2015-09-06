@@ -16,6 +16,7 @@ define([
         this.width = width;
         this.scale.y = this.scale.x;
         this.angle = Math.random()*30 - 15;
+        this.alpha = 0;
         this.body.bounce.y = 0;
         this.body.gravity.y = 981;
         this.body.collideWorldBounds = true;
@@ -25,6 +26,7 @@ define([
         game.add.existing(this);
         
         this.cri = this.game.add.audio('cri_wilhelm');
+        game.add.tween(this).to( { alpha: 1 }, 250, "Quart.easeOut", true);
         game.time.events.add(Phaser.Timer.SECOND * 0.42, this.scream, this);
         game.time.events.add(Phaser.Timer.SECOND * 5, this.disappear, this);
     }
