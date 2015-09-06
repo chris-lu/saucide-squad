@@ -56,7 +56,7 @@ define([
     };
     
     Sausage.prototype.bump = function() {
-        this.body.velocity.y = -Math.random()*200 - 400;
+        this.body.velocity.y = -Math.random()*350 - 600;
     };
     
     Sausage.prototype.changeWindow = function (newType) {
