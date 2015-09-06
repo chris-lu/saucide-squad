@@ -32,7 +32,7 @@ define([
     Sausage.prototype.constructor = Sausage;
     Sausage.prototype.update = function () {
         this.body.angularVelocity=this.body.angularVelocity*0.9;
-        if (this.y > this.game.height - 80) {
+        if (this.y > this.game.height - 89) {
         	this.lostSausage = true;
         }
     };
@@ -60,6 +60,9 @@ define([
         console.log(newType);
         switch(newType) {
             case 1: break;
+            case 2: break;
+            case 5: break;
+            case 6: break;
             default: 
                 this.body.allowGravity = true;
                 this.body.velocity.x = Math.random()*400 - 200;
