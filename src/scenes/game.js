@@ -88,7 +88,7 @@ define([
         update: function () {
             //  Collide the player and the stars with the platforms
             this.game.physics.arcade.collide(this.jumpers, this.bbq, this.burn, null, this);                     
-            this.game.physics.arcade.collide(this.jumpers, this.trampoline, this.rescue);            
+            this.game.physics.arcade.collide(this.jumpers, this.trampoline, this.rescue, null, this);            
             this.game.physics.arcade.collide(this.jumpers, this.building.windows, null, this.swwuuiiii);            
             this.game.physics.arcade.collide(this.jumpers, this.ground, this.splash, null, this);            
             this.updateNuagesPosition();
@@ -245,7 +245,7 @@ define([
                 jumper.kill();
                 bbq.play('burn', 20);
                 bbq.game.loseHuman();
-                this.score -= 1;
+                this.score -= 42;
                 this.scoreText.text = 'Score: ' + this.score;
 				
                 var cri_human = this.game.add.audio('cri_wilhelm');
@@ -253,7 +253,7 @@ define([
             }
             else {
                 jumper.stop();
-				this.score += 1;
+				this.score += 75;
 				
 				var cri_saucisse = this.game.add.audio('cri_saucisse');
 				cri_saucisse.play();
@@ -266,9 +266,13 @@ define([
         rescue: function(bbq, jumper) {
             if(jumper.key == "human") {
                 jumper.stop();
+                this.score += 57;
+                this.scoreText.text = 'Score: ' + this.score;
             }
             else {
                 jumper.bump();
+                this.score -= 1;
+                this.scoreText.text = 'Score: ' + this.score;
             }
         },
         
@@ -284,8 +288,12 @@ define([
             jumper.kill();
             if(jumper.key == "human") {
                 ground.game.loseHuman();
+                this.score -= 31;
+                this.scoreText.text = 'Score: ' + this.score;
             } else {
                 ground.game.loseSausage();
+                this.score -= 28;
+                this.scoreText.text = 'Score: ' + this.score;
             }
             this.jumpers.add(new Splash(ground.game, jumper.x, ground.y - 10, jumper.key == "human" ? 0 : 1));
         }

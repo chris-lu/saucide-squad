@@ -77,6 +77,10 @@ define([
             //this.playButton = this.add.button(400, 600, 'logo', this.startGame, this);
             this.playButton = this.add.button(114, 416, 'play-spritesheet', this.startGame, this, 0, 0, 1);
             this.playButton.scale.setTo(0.5, 0.5);
+			
+			// Ajout texte credits
+            this.creditText = this.add.button(10, 10, 'credits-txt', this.startCredit, this, 0, 0, 1);
+            this.creditText.scale.setTo(0.5, 0.5);
             
         },
         update: function () {
@@ -90,6 +94,15 @@ define([
 
             //	And start the actual game
             this.state.start('Game');
+
+        },
+        startCredit: function () {
+            //	Ok, the Play Button has been clicked or touched, so let's stop the music (otherwise it'll carry on playing)
+            this.music.stop();
+            this.clic.play();
+
+            //	And start the actual game
+            this.state.start('Credit');
 
         }
     };

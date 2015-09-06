@@ -20,6 +20,8 @@ define([
             ['game-over', 'assets/images/game-over.png'],
             ['logo-bandeau', 'assets/images/logo-bandeau.png'],
             ['filter-alpha', 'assets/images/filter-alpha.png'],
+            ['credits-img', 'assets/images/credits.png'],
+            ['credits-txt', 'assets/images/credits-txt.png']
         ];
         
         this.sprites = [
