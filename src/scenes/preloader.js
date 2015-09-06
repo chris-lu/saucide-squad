@@ -58,11 +58,10 @@ define([
             for(var key in this.sprites) {
                 this.game.load.spritesheet(this.sprites[key][0], this.sprites[key][1], this.sprites[key][2], this.sprites[key][3], this.sprites[key][4]);
             }
-            //this.load.image('titlepage', 'images/title.jpg');
-            //this.load.atlas('playButton', 'images/play_button.png', 'images/play_button.json');
-            //this.load.audio('titleMusic', ['audio/main_menu.mp3']);
-            //this.load.bitmapFont('caslon', 'fonts/caslon.png', 'fonts/caslon.xml');
-            //	+ lots of other required assets here
+            
+            this.game.load.audio('zik-intro', 'assets/sounds/sausage_squad_intro_master.mp3');
+            this.game.load.audio('zik', 'assets/sounds/sausage_squad_master.mp3');
+            this.game.load.audio('clic', 'assets/sounds/clic_menu_1.wav');
         },
         create: function () {
             //	Once the load has finished we disable the crop because we're going to sit in the update loop for a short while as the music decodes

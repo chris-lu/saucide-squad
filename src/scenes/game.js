@@ -91,6 +91,11 @@ define([
         },
         
         setupBackground: function() {
+            this.music = this.game.add.audio('zik');
+            this.music.loop=true;
+            this.music.play();
+            this.music.volume=0.25;
+            
             // background
             this.bg = this.game.add.sprite(0, 0, 'bg');
             this.bg.scale.setTo(0.5, 0.5);

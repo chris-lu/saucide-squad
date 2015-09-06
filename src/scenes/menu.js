@@ -5,6 +5,7 @@ define([
 
     function Menu(game) {
         this.music = null;
+        this.clic = null;
         this.playButton = null;
     }
 
@@ -48,10 +49,13 @@ define([
             
             
             
-            
 
-            //this.music = this.add.audio('titleMusic');
-            //this.music.play();
+            this.music = this.game.add.audio('zik-intro');
+            this.music.loop=true;
+            this.music.play();
+            this.music.volume=0.25;
+            
+            this.clic = this.game.add.audio('clic');
             
             
             var so = this.add.sprite(128, 60, 'sausage',3);
@@ -82,7 +86,8 @@ define([
         },
         startGame: function (pointer) {
             //	Ok, the Play Button has been clicked or touched, so let's stop the music (otherwise it'll carry on playing)
-            //this.music.stop();
+            this.music.stop();
+            this.clic.play();
 
             //	And start the actual game
             this.state.start('Game');
