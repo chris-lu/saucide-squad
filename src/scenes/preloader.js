@@ -14,7 +14,12 @@ define([
             ['logo', 'assets/images/title.png'],
             ['plateforme', 'assets/plateforme.png'],
             ['saucisse', 'assets/saucisse.png'],
-            ['sol', 'assets/plateforme.png']
+            ['sol', 'assets/plateforme.png'],
+            ['building','assets/images/immeuble-vide.png'],
+            ['bg','assets/images/fond.png'],
+            ['arbres','assets/images/arbres-premierplan.png'],
+            ['nuage1','assets/images/nuage1.png'],
+            ['nuage2','assets/images/nuage2.png'],
         ];
         
         this.sprites = [

@@ -1,6 +1,6 @@
 define([
-    'phaser', 'sprites/bbq', 'sprites/jumpers', 'sprites/window'
-], function (Phaser, Bbq, Jumpers, Window) {
+    'phaser', 'sprites/bbq', 'sprites/jumpers', 'sprites/building'
+], function (Phaser, Bbq, Jumpers, Building) {
     'use strict';
 
     function Game(game) {
@@ -12,16 +12,6 @@ define([
     Game.prototype = {
         constructor: Game,
 
-        preload: function () {
-            this.load.image('saucisse', 'assets/saucisse.png');
-            this.load.image('sol', 'assets/plateforme.png');
-            this.load.image('bg','assets/images/fond.png');
-            this.load.image('building','assets/images/immeuble-vide.png');
-            this.load.image('arbres','assets/images/arbres-premierplan.png');
-            this.load.image('nuage1','assets/images/nuage1.png');
-            this.load.image('nuage2','assets/images/nuage2.png');
-            
-        },
         create: function () {
             //  We're going to be using physics, so enable the Arcade Physics system
             this.game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -86,6 +76,7 @@ define([
         update: function () {
             //  Collide the player and the stars with the platforms
             this.game.physics.arcade.collide(this.jumpers, this.bbq, this.burn);            
+            this.game.physics.arcade.collide(this.jumpers, this.building.windows, null, this.debug);            
             this.updateNuagesPosition();
         },
         
@@ -106,49 +97,8 @@ define([
             this.nuage2 = this.game.add.sprite(290, 220, 'nuage2');
             this.nuage2.scale.setTo(0.5, 0.5);
             
-            // immeuble
-            this.building = this.game.add.sprite(73,155,'building');
-            this.building.scale.setTo(0.5, 0.5);
-            
-            // fenetres de l'immeuble
-            this.windowsArray = [];
-            
-            var wType = [
-                [4,6,7],
-                [2,3,2],
-                [2,3,1],
-                [2,5,2],
-                [4,0,7],
-            ];
-            
-            if (Math.random() < 0.67) {
-                if (Math.random() <= 0.5) {
-                    wType = [
-                        [2,6,1],
-                        [3,3,3],
-                        [2,6,2],
-                        [2,5,2],
-                        [7,0,7],
-                    ];
-                } else {
-                    wType = [
-                        [7,1,2],
-                        [3,7,2],
-                        [2,5,4],
-                        [3,6,3],
-                        [2,0,2],
-                    ];
-                }
-            }
-            
-            for (var i=0; i < 5; i++) {
-                for (var j=0; j < 3; j++) {
-                    if (!(i==4 && j==1)) {
-                        this.windowsArray.push(new Window(this.game,112 + j*60, 200 + i*60, wType[i][j]));
-                    }
-                }
-            }
-            
+            this.building = new Building(this.game)
+           
         },
         
         setupForeground: function() {
@@ -181,6 +131,17 @@ define([
                 jumper.kill();
                 bbq.play('burn', 20);
             }
+            else {
+                jumper.stop();
+            }
+        },
+        
+        debug: function(jumper, obj) {
+            if(jumper.latestWindow != obj.winType) {
+                jumper.changeWindow(obj.winType);
+            }
+            //console.log(obj);
+            return false;
         }
     };
 
