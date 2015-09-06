@@ -4,7 +4,7 @@ define([
     'use strict';
     function Jumpers(game) {
         var timer = game.time.create(false);
-        timer.loop(2000, this.jump, this);
+        timer.loop(1300, this.jump, this);
         timer.start();
         
         Phaser.Group.call(this, game, null);
@@ -15,10 +15,10 @@ define([
     Jumpers.prototype.constructor = Jumpers;
     Jumpers.prototype.jump = function() {
         if(this.game.rnd.integerInRange(0,1)) {
-            this.add(new Human(this.game, 0));
+            this.add(new Human(this.game, this.game.rnd.between(20, 250), 170));
         }
         else {
-            this.add(new Sausage(this.game, 0));
+            this.add(new Sausage(this.game, this.game.rnd.between(20, 250), 170));
         }
     }
 

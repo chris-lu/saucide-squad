@@ -4,8 +4,10 @@ define([
     'use strict';
     var width = 20;
 
-    function Human(game, y) {
-        Phaser.Sprite.call(this, game, game.width / 2, y - 64, 'human', game.rnd.integerInRange(0, 5));
+    function Human(game, x, y) {
+        this.latestWindow = 0;
+        
+        Phaser.Sprite.call(this, game, x, y - 64, 'human', game.rnd.integerInRange(0, 5));
         game.physics.enable(this, Phaser.Physics.ARCADE);
         
         this.anchor.setTo(0.5, 0.5);
@@ -24,6 +26,8 @@ define([
     Human.prototype.update = function () {
 	//this.game.physics.arcade.collide(this);
     };
+    Human.prototype.changeWindow = function (newType) {
+    }
 
     return Human;
 });
