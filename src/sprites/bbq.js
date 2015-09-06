@@ -5,7 +5,7 @@ define([
     var width = 50;
 
     function Bbq(game) {
-        Phaser.Sprite.call(this, game, game.width / 2, game.height - 82, 'bbq');
+        Phaser.Sprite.call(this, game, game.width / 2, game.height - 84, 'bbq');
         game.physics.enable(this, Phaser.Physics.ARCADE);
         this.animations.add('burn');
         this.anchor.setTo(0.5, 0.5);

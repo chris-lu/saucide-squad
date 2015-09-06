@@ -3,6 +3,7 @@ define([
 ], function (Phaser) {
     'use strict';
     var width = 20;
+    var lostSausage = false;
 
     function Sausage(game, x, y) {
         this.latestWindow = 0;
@@ -31,11 +32,20 @@ define([
     Sausage.prototype.constructor = Sausage;
     Sausage.prototype.update = function () {
         this.body.angularVelocity=this.body.angularVelocity*0.9;
+        if (this.y > this.game.height - 80) {
+        	this.lostSausage = true;
+        }
     };
     Sausage.prototype.stop = function () {
         this.body.velocity.x = 0;
         this.body.velocity.y = 0;
         this.body.angularVelocity = 0;
+        this.body.enable=false;
+        if (!this.lostSausage) {
+        	this.game.add.tween(this).to( { alpha: 0 }, 1000, "Quart.easeIn", true);
+            this.game.add.tween(this).to( { y: this.y-20 }, 1000, "Quart.easeOut", true);
+            this.game.time.events.add(Phaser.Timer.SECOND * 1.1, this.kill, this);
+        }
     };
     Sausage.prototype.disappear = function () {
         this.game.add.tween(this).to( { alpha: 0 }, 1500, "Quart.easeIn", true);
