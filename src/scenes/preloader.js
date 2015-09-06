@@ -62,6 +62,7 @@ define([
             this.game.load.audio('zik-intro', 'assets/sounds/sausage_squad_intro_master.mp3');
             this.game.load.audio('zik', 'assets/sounds/sausage_squad_master.mp3');
             this.game.load.audio('clic', 'assets/sounds/clic_menu_1.wav');
+            this.game.load.audio('cri_wilhelm', 'assets/sounds/cri_wilhelm.wav');
         },
         create: function () {
             //	Once the load has finished we disable the crop because we're going to sit in the update loop for a short while as the music decodes

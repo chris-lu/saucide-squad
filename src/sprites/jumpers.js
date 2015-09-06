@@ -15,10 +15,10 @@ define([
     Jumpers.prototype.constructor = Jumpers;
     Jumpers.prototype.jump = function() {
         if(this.game.rnd.integerInRange(0,1)) {
-            this.add(new Human(this.game, this.game.rnd.between(20, 250), 170));
+            this.add(new Human(this.game, this.game.rnd.between(70, 250), 170));
         }
         else {
-            this.add(new Sausage(this.game, this.game.rnd.between(20, 250), 170));
+            this.add(new Sausage(this.game, this.game.rnd.between(70, 250), 170));
         }
     }
 
