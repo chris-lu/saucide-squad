@@ -11,7 +11,8 @@ define([
         this.anchor.setTo(0.5, 0.5);
         this.width = width;
         this.scale.y = this.scale.x;
-                
+        this.angle = Math.random()*10 - 5;
+
 	this.body.bounce.y = 0.35;
         this.body.gravity.y = 981;
 	this.body.collideWorldBounds = true;
@@ -22,7 +23,7 @@ define([
     Sausage.prototype = Object.create(Phaser.Sprite.prototype);
     Sausage.prototype.constructor = Sausage;
     Sausage.prototype.update = function () {
-	this.game.physics.arcade.collide(this);
+	//this.game.physics.arcade.collide(this);
     };
 
     return Sausage;

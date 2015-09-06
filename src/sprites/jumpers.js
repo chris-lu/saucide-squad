@@ -14,7 +14,12 @@ define([
     Jumpers.prototype = Object.create(Phaser.Group.prototype);
     Jumpers.prototype.constructor = Jumpers;
     Jumpers.prototype.jump = function() {
-        this.add(new Human(this.game, 0));
+        if(this.game.rnd.integerInRange(0,1)) {
+            this.add(new Human(this.game, 0));
+        }
+        else {
+            this.add(new Sausage(this.game, 0));
+        }
     }
 
     return Jumpers;

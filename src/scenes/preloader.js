@@ -12,13 +12,13 @@ define([
                 
         this.images = [
             ['logo', 'assets/images/title.png'],
-            ['bbq', 'assets/images/bbq-pixel.png'],
             ['plateforme', 'assets/plateforme.png'],
             ['saucisse', 'assets/saucisse.png'],
             ['sol', 'assets/plateforme.png']
         ];
         
         this.sprites = [
+            ['bbq', 'assets/images/bbq-sprites.png', 90, 130, 6],
             ['sausage', 'assets/images/so6.png', 64, 192, 4],
             ['human', 'assets/images/humans.png', 64, 219, 5],
             ['window', 'assets/images/fenetres.png', 120, 120, 7],

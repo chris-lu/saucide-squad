@@ -11,7 +11,7 @@ define([
         this.anchor.setTo(0.5, 0.5);
         this.width = width;
         this.scale.y = this.scale.x;
-        this.rotation = Math.random()*30 - 15;
+        this.angle = Math.random()*30 - 15;
 	this.body.bounce.y = 0;
         this.body.gravity.y = 981;
 	this.body.collideWorldBounds = true;
@@ -22,7 +22,7 @@ define([
     Human.prototype = Object.create(Phaser.Sprite.prototype);
     Human.prototype.constructor = Human;
     Human.prototype.update = function () {
-	this.game.physics.arcade.collide(this);
+	//this.game.physics.arcade.collide(this);
     };
 
     return Human;

@@ -7,10 +7,12 @@ define([
     function Bbq(game) {
         Phaser.Sprite.call(this, game, game.width / 2, game.height - 82, 'bbq');
         game.physics.enable(this, Phaser.Physics.ARCADE);
+        this.animations.add('burn');
         this.anchor.setTo(0.5, 0.5);
+        this.body.immovable = true;
+        this.body.setSize(this.width, this.height / 4*3, 0, this.height / 4);
         this.width = width;
         this.scale.y = this.scale.x;
-        this.body.immovable = true;
         game.add.existing(this);
     }
 
