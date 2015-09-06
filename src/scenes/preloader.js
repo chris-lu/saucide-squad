@@ -33,11 +33,9 @@ define([
         ];
         
         this.scripts = [
-            ['webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js'],
         ]
         
         this.audio = [
-            ['webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js'],
             ['zik-intro', 'assets/sounds/sausage_squad_intro_master.mp3'],
             ['zik', 'assets/sounds/sausage_squad_master.mp3'],
             ['clic', 'assets/sounds/clic_menu_1.wav'],
