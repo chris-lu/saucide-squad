@@ -32,7 +32,7 @@ define([
         Phaser.Sprite.call(this, game, 73, 155, 'building');
         this.scale.setTo(0.5, 0.5);
         game.add.existing(this);
-        
+
         this.constructWindows();
         game.add.existing(this.windows);
     }

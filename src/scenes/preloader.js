@@ -53,9 +53,9 @@ define([
         preload: function () {
             //	These are the assets we loaded in Boot.js
             //	A nice sparkly background and a loading progress bar
-            var logo = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'logo');
+            var logo = this.game.add.sprite(0, 50, 'logo-bandeau');
             this.preloadBar = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY + logo.height, 'preloaderBar');
-            logo.anchor.setTo(0.5, 0.5);
+            logo.scale.setTo(0.5, 0.5);
             this.preloadBar.anchor.setTo(0.5, 0.5);
 
             //	This sets the preloadBar sprite as a loader sprite.
@@ -86,10 +86,10 @@ define([
             //	Once the load has finished we disable the crop because we're going to sit in the update loop for a short while as the music decodes
             this.preloadBar.cropEnabled = false;
 
-            var logo = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'logo');
-            logo.anchor.setTo(0.5, 0.5);
+            var logo = this.game.add.sprite(0, 50, 'logo-bandeau');
+            logo.anchor.setTo(0, 0);
+            logo.scale.setTo(0.5, 0.5);
 
-            this.game.add.text(16, 16, 'preloader', {fontSize: '32px', fill: '#fff'});
         },
         update: function () {
             //	You don't actually need to do this, but I find it gives a much smoother game experience.
@@ -101,7 +101,7 @@ define([
             //	If you don't have any music in your game then put the game.state.start line into the create function and delete
             //	the update function completely.
 
-            if (/*this.cache.isSoundDecoded('titleMusic') && */ this.ready == false)
+            if (this.cache.isSoundDecoded('zik') && this.ready == false)
             {
                 this.ready = true;
                 this.state.start('Menu');

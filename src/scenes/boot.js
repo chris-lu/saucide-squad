@@ -34,7 +34,7 @@ define([
         },
         preload: function () {
             this.load.image('preloaderBar', 'assets/images/preloadr_bar.png');
-            this.load.image('logo', 'assets/images/title.png');
+            this.load.image('logo-bandeau', 'assets/images/logo-bandeau.png');
         },
         create: function () {
             this.game.add.text(16, 16, 'boot', {fontSize: '32px', fill: '#fff'});
