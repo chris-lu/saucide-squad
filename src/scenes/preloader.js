@@ -41,10 +41,10 @@ define([
         this.audio = [
             ['zik-intro', 'assets/sounds/sausage_squad_intro_master.mp3'],
             ['zik', 'assets/sounds/sausage_squad_master.mp3'],
-            ['clic', 'assets/sounds/clic_menu_1.mp3'],
-            ['cri_wilhelm', 'assets/sounds/cri_wilhelm.mp3'],
-            ['cri_saucisse', 'assets/sounds/cri_2.mp3'],
-            ['cri_saucisse_sol', 'assets/sounds/cri_3.mp3'],
+            ['clic', 'assets/sounds/clic_menu_1.wav'],
+            ['cri_wilhelm', 'assets/sounds/cri_wilhelm.wav'],
+            ['cri_saucisse', 'assets/sounds/cri_2.wav'],
+            ['cri_saucisse_sol', 'assets/sounds/cri_3.wav'],
         ];
     }
 
@@ -53,9 +53,7 @@ define([
         preload: function () {
             //	These are the assets we loaded in Boot.js
             //	A nice sparkly background and a loading progress bar
-            var logo = this.game.add.sprite(0, 50, 'logo-bandeau');
-            this.preloadBar = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY + logo.height, 'preloaderBar');
-            logo.scale.setTo(0.5, 0.5);
+            this.preloadBar = this.game.add.sprite(this.game.world.centerX, this.game.world.centerY, 'preloaderBar');
             this.preloadBar.anchor.setTo(0.5, 0.5);
 
             //	This sets the preloadBar sprite as a loader sprite.
@@ -84,12 +82,10 @@ define([
         },
         create: function () {
             //	Once the load has finished we disable the crop because we're going to sit in the update loop for a short while as the music decodes
-            this.preloadBar.cropEnabled = false;
-
-            var logo = this.game.add.sprite(0, 50, 'logo-bandeau');
-            logo.anchor.setTo(0, 0);
+            var logo = this.game.add.sprite(0, 10, 'logo-bandeau');
             logo.scale.setTo(0.5, 0.5);
-
+            
+            this.preloadBar.cropEnabled = false;
         },
         update: function () {
             //	You don't actually need to do this, but I find it gives a much smoother game experience.
