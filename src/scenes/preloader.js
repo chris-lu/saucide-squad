@@ -27,11 +27,24 @@ define([
             ['sausage', 'assets/images/so6.png', 64, 192, 4],
             ['human', 'assets/images/humans.png', 64, 219, 5],
             ['window', 'assets/images/fenetres.png', 120, 120, 7],
-            ['window', 'assets/images/fenetres.png', 120, 120, 7],
             ['play-spritesheet', 'assets/images/play-spritesheet.png', 210,140,2],
             ['vie-humaine', 'assets/images/icone-mort-humain.png', 50,60,2],
             ['vie-saucisse', 'assets/images/icone-saucisse-ratee.png', 30,60,2],
+        ];
+        
+        this.scripts = [
+            ['webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js'],
         ]
+        
+        this.audio = [
+            ['webfont', '//ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js'],
+            ['zik-intro', 'assets/sounds/sausage_squad_intro_master.mp3'],
+            ['zik', 'assets/sounds/sausage_squad_master.mp3'],
+            ['clic', 'assets/sounds/clic_menu_1.wav'],
+            ['cri_wilhelm', 'assets/sounds/cri_wilhelm.wav'],
+            ['cri_saucisse', 'assets/sounds/cri_2.wav'],
+            ['cri_saucisse_sol', 'assets/sounds/cri_3.wav'],
+        ];
     }
 
     Preloader.prototype = {
@@ -59,10 +72,14 @@ define([
                 this.game.load.spritesheet(this.sprites[key][0], this.sprites[key][1], this.sprites[key][2], this.sprites[key][3], this.sprites[key][4]);
             }
             
-            this.game.load.audio('zik-intro', 'assets/sounds/sausage_squad_intro_master.mp3');
-            this.game.load.audio('zik', 'assets/sounds/sausage_squad_master.mp3');
-            this.game.load.audio('clic', 'assets/sounds/clic_menu_1.wav');
-            this.game.load.audio('cri_wilhelm', 'assets/sounds/cri_wilhelm.wav');
+            for(var key in this.scripts) {
+                this.game.load.script(this.scripts[key][0], this.scripts[key][1], this.scripts[key][2], this.scripts[key][3], this.sprites[key][4]);
+            }
+            
+            for(var key in this.audio) {
+                this.game.load.audio(this.audio[key][0], this.audio[key][1], this.audio[key][2], this.audio[key][3], this.audio[key][4]);
+            }
+            
         },
         create: function () {
             //	Once the load has finished we disable the crop because we're going to sit in the update loop for a short while as the music decodes

@@ -4,7 +4,7 @@ define([
     'use strict';
     function Jumpers(game) {
         var timer = game.time.create(false);
-        timer.loop(1300, this.jump, this);
+        timer.loop(1425, this.jump, this);
         timer.start();
         
         Phaser.Group.call(this, game, null);
