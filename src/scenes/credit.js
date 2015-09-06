@@ -14,8 +14,12 @@ define([
         create: function () {
             //	We've already preloaded our assets, so let's kick right into the Main Menu itself.
             // background
-            var imgCredits = this.game.add.sprite(0, 0, 'credits-img', this.startGame);
-            imgCredits.scale.setTo(0.5, 0.5);
+			
+            this.imgCredits = this.add.button(0, 0, 'credits-img', this.startMenu, this, 0, 0, 1);
+            this.imgCredits.scale.setTo(0.5, 0.5);
+			
+			// Apparition de la croix
+            this.croixFermer = this.game.add.text(0, -10, 'x', {fontSize: '32px', fill: '#fff'});
 
             this.music = this.game.add.audio('zik-intro');
             this.music.loop=true;
@@ -29,13 +33,13 @@ define([
             // à virer quand on voudra vraiment le menu du cul
             // this.state.start('Game');
         },
-        startGame: function (pointer) {
+        startMenu: function (pointer) {
             //	Ok, the Play Button has been clicked or touched, so let's stop the music (otherwise it'll carry on playing)
             this.music.stop();
             this.clic.play();
 
             //	And start the actual game
-            this.state.start('Game');
+            this.state.start('Menu');
 
         }
     };
