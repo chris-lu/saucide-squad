@@ -17,6 +17,7 @@ define([
             ['arbres', 'assets/images/arbres-premierplan.png'],
             ['nuage1', 'assets/images/nuage1.png'],
             ['nuage2', 'assets/images/nuage2.png'],
+            ['game-over', 'assets/images/game-over.png'],
             ['logo-bandeau', 'assets/images/logo-bandeau.png'],
             ['filter-alpha', 'assets/images/filter-alpha.png'],
         ];
