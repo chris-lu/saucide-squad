@@ -80,7 +80,7 @@ define([
         
         update: function () {
             //  Collide the player and the stars with the platforms
-            this.game.physics.arcade.collide(this.jumpers, this.bbq);            
+            this.game.physics.arcade.collide(this.jumpers, this.bbq, this.burn);            
             this.updateNuagesPosition();
         },
         
@@ -153,9 +153,8 @@ define([
         },
         
         setupActors: function() {
-            this.bbq = new Bbq(this.game);
             this.jumpers = new Jumpers(this.game);
-            this.jumpers.jump();
+            this.bbq = new Bbq(this.game);
             //this.sausage = new Sausage(this.game, this.building.y);
         },
         
@@ -171,6 +170,13 @@ define([
                 this.nuage2.x = this.game.world.width;
             }
         },
+        
+        burn: function(bbq, jumper) {
+            if(jumper.key == "human") {
+                jumper.kill();
+                bbq.play('burn', 20);
+            }
+        }
     };
 
     return Game;
