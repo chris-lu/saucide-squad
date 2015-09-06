@@ -55,12 +55,15 @@ define([
         this.game.time.events.add(Phaser.Timer.SECOND * 2, this.kill, this);
     };
     
+    Sausage.prototype.bump = function() {
+        this.body.velocity.y = -Math.random()*200 - 400;
+    };
+    
     Sausage.prototype.changeWindow = function (newType) {
         switch(this.latestWindow) {
             case 1: break;
             default: break;
         }
-        console.log(newType);
         switch(newType) {
             case 1: break;
             case 2: break;

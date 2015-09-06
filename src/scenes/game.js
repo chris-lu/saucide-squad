@@ -1,6 +1,6 @@
 define([
-    'phaser', 'sprites/bbq', 'sprites/jumpers', 'sprites/building'
-], function (Phaser, Bbq, Jumpers, Building) {
+    'phaser', 'sprites/building', 'sprites/bbq', 'sprites/rescue', 'sprites/jumpers'
+], function (Phaser, Building, Bbq, Rescue, Jumpers ) {
     'use strict';
 
     function Game(game) {
@@ -24,6 +24,8 @@ define([
 		
 			this.score = 0;
 			this.scoreText = this.game.add.text(10, this.game.height - 46, 'Score: 0', {font: '32px slkscr', fill: '#fff'});
+            
+            this.game.input.onTap.add(this.switchControl, this);
             
 //            var saucisses;
 
@@ -80,9 +82,17 @@ define([
         
         update: function () {
             //  Collide the player and the stars with the platforms
-            this.game.physics.arcade.collide(this.jumpers, this.bbq, this.burn, null, this);            
-            this.game.physics.arcade.collide(this.jumpers, this.building.windows, null, this.debug);            
+            this.game.physics.arcade.collide(this.jumpers, this.bbq, this.burn, null, this);                     
+            this.game.physics.arcade.collide(this.jumpers, this.trampoline, this.rescue);            
+            this.game.physics.arcade.collide(this.jumpers, this.building.windows, null, this.swwuuiiii);
             this.updateNuagesPosition();
+        },
+        
+        switchControl: function () {
+             if(this.game.input.activePointer.leftButton.isDown) {
+                 this.trampoline.active = !this.trampoline.active;
+                 this.bbq.active = !this.trampoline.active;
+             }
         },
         
         incrementScore: function () {
@@ -168,6 +178,8 @@ define([
         setupActors: function() {
             this.jumpers = new Jumpers(this.game);
             this.bbq = new Bbq(this.game);
+            this.trampoline = new Rescue(this.game);
+            this.bbq.active = true;
             //this.sausage = new Sausage(this.game, this.building.y);
         },
         
@@ -198,7 +210,16 @@ define([
             }
         },
         
-        debug: function(jumper, obj) {
+        rescue: function(bbq, jumper) {
+            if(jumper.key == "human") {
+                jumper.stop();
+            }
+            else {
+                jumper.bump();
+            }
+        },
+        
+        swwuuiiii: function(jumper, obj) {
             if(jumper.latestWindow != obj.winType) {
                 jumper.changeWindow(obj.winType);
             }
