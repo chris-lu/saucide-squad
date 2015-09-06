@@ -51,7 +51,7 @@ define([
         }
     };    
     Human.prototype.scream = function () {
-        this.cri.play();
+        //this.cri.play();
     };
     Human.prototype.disappear = function () {
         this.game.add.tween(this).to( { alpha: 0 }, 1500, "Quart.easeIn", true);

@@ -202,11 +202,19 @@ define([
                 bbq.play('burn', 20);
 				this.score -= 1;
 				this.scoreText.text = 'Score: ' + this.score;
+				
+				var cri_human = this.game.add.audio('cri_wilhelm');
+				cri_human.play();
             }
             else {
                 jumper.stop();
 				this.score += 1;
+				
+				var cri_saucisse = this.game.add.audio('cri_saucisse');
+				cri_saucisse.play();
+				
 				this.scoreText.text = 'Score: ' + this.score;
+				
             }
         },
         

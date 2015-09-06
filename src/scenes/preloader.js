@@ -11,9 +11,6 @@ define([
                 
         this.images = [
             ['logo', 'assets/images/title.png'],
-            ['plateforme', 'assets/plateforme.png'],
-            ['saucisse', 'assets/saucisse.png'],
-            ['sol', 'assets/plateforme.png'],
             ['bg', 'assets/images/fond.png'],
             ['building', 'assets/images/immeuble-vide.png'],
             ['rescue', 'assets/images/rescue.png'],
@@ -64,6 +61,8 @@ define([
             this.game.load.audio('zik', 'assets/sounds/sausage_squad_master.mp3');
             this.game.load.audio('clic', 'assets/sounds/clic_menu_1.wav');
             this.game.load.audio('cri_wilhelm', 'assets/sounds/cri_wilhelm.wav');
+            this.game.load.audio('cri_saucisse', 'assets/sounds/cri_2.wav');
+			this.game.load.audio('cri_saucisse_sol', 'assets/sounds/cri_3.wav');
         },
         create: function () {
             //	Once the load has finished we disable the crop because we're going to sit in the update loop for a short while as the music decodes
