@@ -11,9 +11,6 @@ define([
                 
         this.images = [
             ['logo', 'assets/images/title.png'],
-            ['plateforme', 'assets/plateforme.png'],
-            ['saucisse', 'assets/saucisse.png'],
-            ['sol', 'assets/plateforme.png'],
             ['bg', 'assets/images/fond.png'],
             ['building', 'assets/images/immeuble-vide.png'],
             ['rescue', 'assets/images/rescue.png'],
@@ -26,6 +23,7 @@ define([
         
         this.sprites = [
             ['bbq', 'assets/images/bbq-sprites.png', 90, 130, 6],
+            ['splash', 'assets/images/taches.png', 80, 30, 2],
             ['sausage', 'assets/images/so6.png', 64, 192, 4],
             ['human', 'assets/images/humans.png', 64, 219, 5],
             ['window', 'assets/images/fenetres.png', 120, 120, 7],
