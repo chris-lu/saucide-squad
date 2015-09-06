@@ -17,9 +17,6 @@ define([
 			
             this.imgCredits = this.add.button(0, 0, 'credits-img', this.startMenu, this, 0, 0, 1);
             this.imgCredits.scale.setTo(0.5, 0.5);
-			
-			// Apparition de la croix
-            this.croixFermer = this.game.add.text(0, -10, 'x', {fontSize: '32px', fill: '#fff'});
 
             this.music = this.game.add.audio('zik-intro');
             this.music.loop=true;
