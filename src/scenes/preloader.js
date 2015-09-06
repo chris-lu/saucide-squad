@@ -40,10 +40,10 @@ define([
         this.audio = [
             ['zik-intro', 'assets/sounds/sausage_squad_intro_master.mp3'],
             ['zik', 'assets/sounds/sausage_squad_master.mp3'],
-            ['clic', 'assets/sounds/clic_menu_1.wav'],
-            ['cri_wilhelm', 'assets/sounds/cri_wilhelm.wav'],
-            ['cri_saucisse', 'assets/sounds/cri_2.wav'],
-            ['cri_saucisse_sol', 'assets/sounds/cri_3.wav'],
+            ['clic', 'assets/sounds/clic_menu_1.mp3'],
+            ['cri_wilhelm', 'assets/sounds/cri_wilhelm.mp3'],
+            ['cri_saucisse', 'assets/sounds/cri_2.mp3'],
+            ['cri_saucisse_sol', 'assets/sounds/cri_3.mp3'],
         ];
     }
 
