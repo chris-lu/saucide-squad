@@ -15,11 +15,6 @@ define([
         preload: function () {
             this.load.image('saucisse', 'assets/saucisse.png');
             this.load.image('sol', 'assets/plateforme.png');
-            this.load.image('bg','assets/images/fond.png');
-            this.load.image('building','assets/images/immeuble-vide.png');
-            this.load.image('arbres','assets/images/arbres-premierplan.png');
-            this.load.image('nuage1','assets/images/nuage1.png');
-            this.load.image('nuage2','assets/images/nuage2.png');
             
         },
         create: function () {
