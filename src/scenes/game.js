@@ -187,7 +187,7 @@ define([
                 	scene.viesSaucisses[scene.countViesSaucisses].frame=1;
                 }
                 if (scene.countViesSaucisses==0) {
-                    console.log('GAME OVER');
+                    scene.gameOver();
                 }
             };
             this.game.loseHuman = function(){
@@ -196,7 +196,7 @@ define([
                 	scene.viesHumaines[scene.countViesHumaines].frame=1;
                 }
                 if (scene.countViesHumaines==0) {
-                    console.log('GAME OVER');
+                    scene.gameOver();
                 }
             };
         },
@@ -207,6 +207,24 @@ define([
             this.trampoline = new Rescue(this.game);
             this.bbq.active = true;
             //this.sausage = new Sausage(this.game, this.building.y);
+        },
+        
+        gameOver: function() {
+            console.log('GAME OVER !');
+            this.jumpers.kill();
+            var haze = this.add.sprite(0, 0, 'filter-alpha');
+            haze.width = this.game.width;
+            haze.height = this.game.height;
+            
+            var bandeau = this.add.sprite(0, 166, 'game-over');
+            bandeau.scale.setTo(0.5, 0.5);
+            this.game.add.tween(haze).to( { alpha: 1 }, 1000, "Quart.easeIn", true);
+            this.game.add.tween(bandeau).to( { alpha: 1 }, 1000, "Quart.easeIn", true);
+            this.game.time.events.add(Phaser.Timer.SECOND * 6, this.end, this);            
+        },
+        
+        end: function() {
+            this.state.start('Menu');
         },
         
         updateNuagesPosition: function() {
