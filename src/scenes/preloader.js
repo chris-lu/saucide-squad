@@ -11,9 +11,6 @@ define([
                 
         this.images = [
             ['logo', 'assets/images/title.png'],
-            ['plateforme', 'assets/plateforme.png'],
-            ['saucisse', 'assets/saucisse.png'],
-            ['sol', 'assets/plateforme.png'],
             ['bg', 'assets/images/fond.png'],
             ['building', 'assets/images/immeuble-vide.png'],
             ['rescue', 'assets/images/rescue.png'],

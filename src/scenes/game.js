@@ -9,6 +9,7 @@ define([
         var nuage1, nuage2;
         var viesHumaines, viesSaucisses;
         var countViesHumaines, countViesSaucisses;
+        var firstSwitch=true;
     }
 
     Game.prototype = {
@@ -25,7 +26,11 @@ define([
 			this.score = 0;
 			this.scoreText = this.game.add.text(10, this.game.height - 46, 'Score: 0', {font: '32px slkscr', fill: '#fff'});
             
-            this.game.input.onTap.add(this.switchControl, this);
+            if (this.game.device.desktop) {
+            	this.firstSwitch=false;
+            }
+            
+            this.game.input.onDown.add(this.switchControl, this);
             
 //            var saucisses;
 
@@ -86,13 +91,33 @@ define([
             this.game.physics.arcade.collide(this.jumpers, this.trampoline, this.rescue);            
             this.game.physics.arcade.collide(this.jumpers, this.building.windows, null, this.swwuuiiii);
             this.updateNuagesPosition();
+            
+/*
+            if (this.game.input.activePointer.isDown) {
+            	if (!this.pointerDown) {
+                	console.log('is down alors qu on ne l était pas avant');
+                	this.pointerDown=true;
+                	if (this.firstSwitch) {
+                		this.firstSwitch=false;
+                	} else {
+                    	console.log('SWITCH!');
+                    	this.switchControl();
+                	}
+            	}
+            } else if (this.pointerDown) {
+                console.log('is pas down alors qu on l était avant');
+                this.pointerDown=false;
+            }
+*/
         },
         
         switchControl: function () {
-             if(this.game.input.activePointer.leftButton.isDown) {
-                 this.trampoline.active = !this.trampoline.active;
-                 this.bbq.active = !this.trampoline.active;
-             }
+            if (this.firstSwitch) {
+            	this.firstSwitch=false;
+            } else {
+                this.trampoline.active = !this.trampoline.active;
+                this.bbq.active = !this.trampoline.active;
+            }
         },
         
         incrementScore: function () {
