@@ -1,6 +1,6 @@
 define([
-    'phaser', 'sprites/building', 'sprites/bbq', 'sprites/rescue', 'sprites/jumpers'
-], function (Phaser, Building, Bbq, Rescue, Jumpers ) {
+    'phaser', 'sprites/building', 'sprites/ground', 'sprites/bbq', 'sprites/rescue', 'sprites/jumpers', 'sprites/splash'
+], function (Phaser, Building, Ground, Bbq, Rescue, Jumpers, Splash ) {
     'use strict';
 
     function Game(game) {
@@ -89,7 +89,8 @@ define([
             //  Collide the player and the stars with the platforms
             this.game.physics.arcade.collide(this.jumpers, this.bbq, this.burn, null, this);                     
             this.game.physics.arcade.collide(this.jumpers, this.trampoline, this.rescue);            
-            this.game.physics.arcade.collide(this.jumpers, this.building.windows, null, this.swwuuiiii);
+            this.game.physics.arcade.collide(this.jumpers, this.building.windows, null, this.swwuuiiii);            
+            this.game.physics.arcade.collide(this.jumpers, this.ground, this.splash, null, this);            
             this.updateNuagesPosition();
             
 /*
@@ -142,8 +143,8 @@ define([
             this.nuage2 = this.game.add.sprite(290, 220, 'nuage2');
             this.nuage2.scale.setTo(0.5, 0.5);
             
-            this.building = new Building(this.game)
-           
+            this.building = new Building(this.game);
+            this.ground = new Ground(this.game);
         },
         
         setupForeground: function() {
@@ -180,7 +181,7 @@ define([
             scene.countViesHumaines=3;
             
             // 3. on setup les fonctions de désincrémentation des scores sur l'objet Phaser.game qui est accessible de partout et qui possédera une référence vers la scène game dans la fonction.
-            this.game.loseSaucisse = function(){
+            this.game.loseSausage = function(){
                 if (scene.countViesSaucisses>0) {
                 	scene.countViesSaucisses--;
                 	scene.viesSaucisses[scene.countViesSaucisses].frame=1;
@@ -189,7 +190,7 @@ define([
                     console.log('GAME OVER');
                 }
             };
-            this.game.loseHumain = function(){
+            this.game.loseHuman = function(){
                 if (scene.countViesHumaines>0) {
                 	scene.countViesHumaines--;
                 	scene.viesHumaines[scene.countViesHumaines].frame=1;
@@ -225,13 +226,22 @@ define([
             if(jumper.key == "human") {
                 jumper.kill();
                 bbq.play('burn', 20);
-				this.score -= 1;
-				this.scoreText.text = 'Score: ' + this.score;
+                bbq.game.loseHuman();
+                this.score -= 1;
+                this.scoreText.text = 'Score: ' + this.score;
+				
+                var cri_human = this.game.add.audio('cri_wilhelm');
+                cri_human.play();
             }
             else {
                 jumper.stop();
 				this.score += 1;
+				
+				var cri_saucisse = this.game.add.audio('cri_saucisse');
+				cri_saucisse.play();
+				
 				this.scoreText.text = 'Score: ' + this.score;
+				
             }
         },
         
@@ -250,6 +260,16 @@ define([
             }
             //console.log(obj);
             return false;
+        },
+        
+        splash: function(ground, jumper) {
+            jumper.kill();
+            if(jumper.key == "human") {
+                ground.game.loseHuman();
+            } else {
+                ground.game.loseSausage();
+            }
+            this.jumpers.add(new Splash(ground.game, jumper.x, ground.y - 10, jumper.key == "human" ? 0 : 1));
         }
     };
 

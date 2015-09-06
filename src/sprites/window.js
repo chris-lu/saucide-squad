@@ -8,13 +8,12 @@ define([
         this.winType = type; //Math.floor(Math.random() * 7) + 1;;
         Phaser.Sprite.call(this, game, x, y, 'window', this.winType);
         game.physics.enable(this, Phaser.Physics.ARCADE);
-        this.anchor.setTo(0.5, 0.5);        
+        this.anchor.setTo(0.25, 0.5);        
         this.body.immovable = true;
-        this.body.setSize(30, 1, this.width/2 - 15, this.height / 2);
-
+        // Cannot set offset off box here cannot understand why (working in BBQ). Moving windows instead... 
+        this.body.setSize(30, 2);
         
         //game.physics.enable(this, Phaser.Physics.ARCADE);
-        this.anchor.setTo(0.5, 0.5);
         this.scale.setTo(0.5, 0.5);
         
         game.add.existing(this);
