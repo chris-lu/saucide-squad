@@ -7,6 +7,8 @@ define([
         var bg, building, arbres, saucisse, platforms, score = 0, scoreText, bbq, sausage, jumpers;
         var windowsArray;
         var nuage1, nuage2;
+        var viesHumaines, viesSaucisses;
+        var countViesHumaines, countViesSaucisses;
     }
 
     Game.prototype = {
@@ -110,6 +112,54 @@ define([
             // arbres de devant
             this.arbres = this.game.add.sprite(0,481,'arbres');
             this.arbres.scale.setTo(0.5, 0.5);
+            
+            // vies
+            // 1. on setup les sprites qui affichent les vies
+            var scene = this;
+            scene.viesHumaines = [];
+            var vie1 = this.game.add.sprite(10,10,'vie-humaine',0);
+            vie1.scale.setTo(0.5, 0.5);
+            scene.viesHumaines.push(vie1);
+            var vie2 = this.game.add.sprite(40,10,'vie-humaine',0);
+            vie2.scale.setTo(0.5, 0.5);
+            scene.viesHumaines.push(vie2);
+            var vie3 = this.game.add.sprite(70,10,'vie-humaine',0);
+            vie3.scale.setTo(0.5, 0.5);
+            scene.viesHumaines.push(vie3);
+            scene.viesSaucisses = [];
+            var vie4 = this.game.add.sprite(300-10,10,'vie-saucisse',0);
+            vie4.scale.setTo(0.5, 0.5);
+            scene.viesSaucisses.push(vie4);
+            var vie5 = this.game.add.sprite(300-35,10,'vie-saucisse',0);
+            vie5.scale.setTo(0.5, 0.5);
+            scene.viesSaucisses.push(vie5);
+            var vie6 = this.game.add.sprite(300-60,10,'vie-saucisse',0);
+            vie6.scale.setTo(0.5, 0.5);
+            scene.viesSaucisses.push(vie6);
+            
+            // 2. on setup les compteurs de vies
+            scene.countViesSaucisses=3;
+            scene.countViesHumaines=3;
+            
+            // 3. on setup les fonctions de désincrémentation des scores sur l'objet Phaser.game qui est accessible de partout et qui possédera une référence vers la scène game dans la fonction.
+            this.game.loseSaucisse = function(){
+                if (scene.countViesSaucisses>0) {
+                	scene.countViesSaucisses--;
+                	scene.viesSaucisses[scene.countViesSaucisses].frame=1;
+                }
+                if (scene.countViesSaucisses==0) {
+                    console.log('GAME OVER');
+                }
+            };
+            this.game.loseHumain = function(){
+                if (scene.countViesHumaines>0) {
+                	scene.countViesHumaines--;
+                	scene.viesHumaines[scene.countViesHumaines].frame=1;
+                }
+                if (scene.countViesHumaines==0) {
+                    console.log('GAME OVER');
+                }
+            };
         },
         
         setupActors: function() {

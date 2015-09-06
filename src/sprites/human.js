@@ -4,6 +4,7 @@ define([
     'use strict';
     var width = 20;
     var cri = null;
+    var lostHuman = false;
 
     function Human(game, x, y) {
         this.latestWindow = 0;
@@ -31,7 +32,10 @@ define([
     Human.prototype = Object.create(Phaser.Sprite.prototype);
     Human.prototype.constructor = Human;
     Human.prototype.update = function () {
-	//this.game.physics.arcade.collide(this);
+	    if (this.y > this.game.height - 88 && !this.lostHuman) {
+	    	this.lostHuman = true;
+	    	this.game.loseHumain();
+	    }
     };
     Human.prototype.scream = function () {
         this.cri.play();

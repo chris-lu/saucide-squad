@@ -46,7 +46,7 @@ define([
         if (rnd < 0.67) {
             wType = this.wMatrix[2];
         }
-        else if (rnd < 0.5) {
+        else if (Math.random() < 0.5) {
             wType = this.wMatrix[1];
         }
         else {

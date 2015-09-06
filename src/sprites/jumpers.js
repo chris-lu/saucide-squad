@@ -14,10 +14,9 @@ define([
     Jumpers.prototype = Object.create(Phaser.Group.prototype);
     Jumpers.prototype.constructor = Jumpers;
     Jumpers.prototype.jump = function() {
-        if(this.game.rnd.integerInRange(0,1)) {
+        if(Math.random() < 0.23) {
             this.add(new Human(this.game, this.game.rnd.between(70, 250), 170));
-        }
-        else {
+        } else {
             this.add(new Sausage(this.game, this.game.rnd.between(70, 250), 170));
         }
     }

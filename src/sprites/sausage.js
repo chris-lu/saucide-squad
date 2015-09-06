@@ -32,8 +32,9 @@ define([
     Sausage.prototype.constructor = Sausage;
     Sausage.prototype.update = function () {
         this.body.angularVelocity=this.body.angularVelocity*0.9;
-        if (this.y > this.game.height - 89) {
+        if (this.y > this.game.height - 89 && !this.lostSausage) {
         	this.lostSausage = true;
+        	this.game.loseSaucisse();
         }
     };
     Sausage.prototype.stop = function () {
