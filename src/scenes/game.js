@@ -4,7 +4,7 @@ define([
     'use strict';
 
     function Game(game) {
-        var bg, building, arbres, saucisse, platforms, score = 0, scoreText, bbq, sausage, jumpers;
+        var bg, building, arbres, saucisse, platforms, score, scoreText, bbq, sausage, jumpers;
         var windowsArray;
         var nuage1, nuage2;
         var viesHumaines, viesSaucisses;
@@ -21,6 +21,9 @@ define([
             this.setupBackground();
             this.setupActors();
             this.setupForeground();
+		
+			this.score = 0;
+			this.scoreText = this.game.add.text(10, this.game.height - 46, 'Score: 0', {font: '32px slkscr', fill: '#fff'});
             
 //            var saucisses;
 
@@ -77,7 +80,7 @@ define([
         
         update: function () {
             //  Collide the player and the stars with the platforms
-            this.game.physics.arcade.collide(this.jumpers, this.bbq, this.burn);            
+            this.game.physics.arcade.collide(this.jumpers, this.bbq, this.burn, null, this);            
             this.game.physics.arcade.collide(this.jumpers, this.building.windows, null, this.debug);            
             this.updateNuagesPosition();
         },
@@ -185,9 +188,13 @@ define([
             if(jumper.key == "human") {
                 jumper.kill();
                 bbq.play('burn', 20);
+				this.score -= 1;
+				this.scoreText.text = 'Score: ' + this.score;
             }
             else {
                 jumper.stop();
+				this.score += 1;
+				this.scoreText.text = 'Score: ' + this.score;
             }
         },
         
