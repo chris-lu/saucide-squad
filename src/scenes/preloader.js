@@ -15,11 +15,13 @@ define([
             ['plateforme', 'assets/plateforme.png'],
             ['saucisse', 'assets/saucisse.png'],
             ['sol', 'assets/plateforme.png'],
-            ['building','assets/images/immeuble-vide.png'],
-            ['bg','assets/images/fond.png'],
-            ['arbres','assets/images/arbres-premierplan.png'],
-            ['nuage1','assets/images/nuage1.png'],
-            ['nuage2','assets/images/nuage2.png'],
+            ['bg', 'assets/images/fond.png'],
+            ['building', 'assets/images/immeuble-vide.png'],
+            ['arbres', 'assets/images/arbres-premierplan.png'],
+            ['nuage1', 'assets/images/nuage1.png'],
+            ['nuage2', 'assets/images/nuage2.png'],
+            ['logo-bandeau', 'assets/images/logo-bandeau.png'],
+            ['filter-alpha', 'assets/images/filter-alpha.png'],
         ];
         
         this.sprites = [
@@ -27,6 +29,8 @@ define([
             ['sausage', 'assets/images/so6.png', 64, 192, 4],
             ['human', 'assets/images/humans.png', 64, 219, 5],
             ['window', 'assets/images/fenetres.png', 120, 120, 7],
+            ['window', 'assets/images/fenetres.png', 120, 120, 7],
+            ['play-spritesheet', 'assets/images/play-spritesheet.png', 210,140,2],
         ]
     }
 
