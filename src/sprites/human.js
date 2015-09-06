@@ -39,6 +39,17 @@ define([
 	    	this.game.loseHumain();
 	    }
     };
+    Human.prototype.stop = function () {
+        this.body.velocity.x = 0;
+        this.body.velocity.y = 0;
+        this.body.angularVelocity = 0;
+        this.body.enable=false;
+        if (!this.lostSausage) {
+        	this.game.add.tween(this).to( { alpha: 0 }, 1000, "Quart.easeIn", true);
+            this.game.add.tween(this).to( { y: this.y-20 }, 1000, "Quart.easeOut", true);
+            this.game.time.events.add(Phaser.Timer.SECOND * 1.1, this.kill, this);
+        }
+    };    
     Human.prototype.scream = function () {
         this.cri.play();
     };

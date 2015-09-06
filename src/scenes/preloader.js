@@ -8,7 +8,6 @@ define([
         this.preloadBar = null;
         this.ready = false;
         this.game = game;
-        
                 
         this.images = [
             ['logo', 'assets/images/title.png'],
@@ -17,6 +16,7 @@ define([
             ['sol', 'assets/plateforme.png'],
             ['bg', 'assets/images/fond.png'],
             ['building', 'assets/images/immeuble-vide.png'],
+            ['rescue', 'assets/images/rescue.png'],
             ['arbres', 'assets/images/arbres-premierplan.png'],
             ['nuage1', 'assets/images/nuage1.png'],
             ['nuage2', 'assets/images/nuage2.png'],
