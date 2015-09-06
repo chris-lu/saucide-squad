@@ -43,7 +43,7 @@ define([
         this.windows = this.game.add.group();
         var rnd = Math.random();
         var wType = [];
-        if (rnd < 0.67) {
+        if (rnd > 0.67) {
             wType = this.wMatrix[2];
         }
         else if (Math.random() < 0.5) {
