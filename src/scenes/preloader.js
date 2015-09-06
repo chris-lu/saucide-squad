@@ -29,7 +29,6 @@ define([
             ['sausage', 'assets/images/so6.png', 64, 192, 4],
             ['human', 'assets/images/humans.png', 64, 219, 5],
             ['window', 'assets/images/fenetres.png', 120, 120, 7],
-            ['window', 'assets/images/fenetres.png', 120, 120, 7],
             ['play-spritesheet', 'assets/images/play-spritesheet.png', 210,140,2],
             ['vie-humaine', 'assets/images/icone-mort-humain.png', 50,60,2],
             ['vie-saucisse', 'assets/images/icone-saucisse-ratee.png', 30,60,2],
