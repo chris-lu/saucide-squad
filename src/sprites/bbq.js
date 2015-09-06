@@ -3,7 +3,8 @@ define([
 ], function (Phaser) {
     'use strict';
     var width = 50;
-
+    var pointerDown = true;
+    
     function Bbq(game) {
         Phaser.Sprite.call(this, game, game.width, game.height - 84, 'bbq');
         game.physics.enable(this, Phaser.Physics.ARCADE);

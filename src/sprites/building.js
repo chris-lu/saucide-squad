@@ -55,7 +55,9 @@ define([
         for (var i = 0; i < 5; i++) {
             for (var j = 0; j < 3; j++) {
                 if (!(i == 4 && j == 1)) {
-                    this.windows.add(new Window(this.game, 112 + j * 60, 200 + i * 60, wType[i][j]));
+                    var window = new Window(this.game, 97 + j * 60, 200 + i * 60, wType[i][j]);
+                    this.windows.add(window);
+                    // this.game.debug.body(window);
                 }
             }
         }

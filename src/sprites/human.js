@@ -34,10 +34,6 @@ define([
     Human.prototype = Object.create(Phaser.Sprite.prototype);
     Human.prototype.constructor = Human;
     Human.prototype.update = function () {
-	    if (this.y > this.game.height - 88 && !this.lostHuman) {
-	    	this.lostHuman = true;
-	    	this.game.loseHumain();
-	    }
     };
     Human.prototype.stop = function () {
         this.body.velocity.x = 0;

@@ -14,7 +14,6 @@ define([
         create: function () {
             //	We've already preloaded our assets, so let's kick right into the Main Menu itself.
             
-            
             // background
             var bg = this.game.add.sprite(0, 0, 'bg');
             bg.scale.setTo(0.5, 0.5);

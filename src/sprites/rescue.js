@@ -5,7 +5,7 @@ define([
     var width = 50;    
 
     function Rescue(game) {
-        Phaser.Sprite.call(this, game, game.width, game.height - 60, 'rescue');
+        Phaser.Sprite.call(this, game, game.width, game.height - 70, 'rescue');
         game.physics.enable(this, Phaser.Physics.ARCADE);
         this.active = false;
         this.anchor.setTo(0.5, 0.5);
