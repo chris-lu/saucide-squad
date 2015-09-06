@@ -19,6 +19,8 @@ define([
             ['nuage2', 'assets/images/nuage2.png'],
             ['logo-bandeau', 'assets/images/logo-bandeau.png'],
             ['filter-alpha', 'assets/images/filter-alpha.png'],
+            ['credits-img', 'assets/images/credits.png'],
+            ['credits-txt', 'assets/images/credits-txt.png']
         ];
         
         this.sprites = [
